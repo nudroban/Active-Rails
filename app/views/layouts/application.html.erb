@@ -14,7 +14,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application",media: 'all', "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= javascript_include_tag %>
   </head>
 
   <body>
@@ -31,6 +31,9 @@
         </li>
       </ul>
     </div>
+    <li class="<%= "active" if current_page?("/users/sign_up") %>">
+      <%= link_to "Sign up", new_user_registration_path %>
+    </li>
   </nav>
 
   <div class="container-fluid">

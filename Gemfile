@@ -80,3 +80,5 @@ gem "font-awesome-rails", "~> 4.7"
 gem "bootstrap", "~> 5.1"
 
 gem "bootstrap_form", "~> 5.0"
+
+gem "devise", "~> 4.8"
