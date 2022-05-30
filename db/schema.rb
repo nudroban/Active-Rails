@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_30_203828) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_30_212511) do
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -24,6 +24,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_30_203828) do
     t.integer "project_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "author_id", null: false
+    t.index ["author_id"], name: "index_tickets_on_author_id"
     t.index ["project_id"], name: "index_tickets_on_project_id"
   end
 
@@ -35,9 +37,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_30_203828) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "tickets", "projects"
+  add_foreign_key "tickets", "users", column: "author_id"
 end
